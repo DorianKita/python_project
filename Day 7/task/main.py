@@ -32,7 +32,7 @@ while not game_over:
 
     display = ""
     if guess in correct_letters:
-        print(f"You have already guessed {guess}")
+        print(f"\n!*!*!*!*!*!*!You have already guessed {guess}!*!*!*!*!*!*!*!\n")
 
     for letter in chosen_word:
         if letter == guess:
@@ -51,11 +51,11 @@ while not game_over:
     if guess not in chosen_word:
         lives -= 1
         print(f"You guessed {guess}, that's not in the word. You lose a life.")
-
         if lives == 0:
             game_over = True
 
             # TODO 7: - Update the print statement below to give the user the correct word they were trying to guess.
+            print(f"Correct word was {chosen_word}")
             print(f"***********************YOU LOSE**********************")
 
     if "_" not in display:
