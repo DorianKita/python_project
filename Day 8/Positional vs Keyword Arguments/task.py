@@ -6,3 +6,10 @@ def greet_with_name(name):
 
 
 greet_with_name("Jack Bauer")
+
+
+def greet_with(name,location):
+    print(f"Hello {name}")
+    print(f"What is it like in {location}")
+
+greet_with(location="Żary", name="Dorian")
