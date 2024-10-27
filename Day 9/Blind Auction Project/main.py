@@ -18,12 +18,16 @@ while new_bidder:
 # TODO-2: Save data into dictionary {name: price}
 # TODO-3: Whether if new bids need to be added
 # TODO-4: Compare bids in dictionary
-highest_bid = 0
-winner = ""
+result = {
+    "name":"",
+    "bid": 0
+}
 for bid in auction:
+    highest_bid = 0
     if auction[bid] > highest_bid:
         highest_bid = auction[bid]
-        winner = bid
+        result["bid"] = highest_bid
+        result["name"] = bid
 
 
-print(f"Winner is {winner}, with bid of ${highest_bid}")
+print(f'Winner is {result["name"]} with highest bid of ${result["bid"]}')
