@@ -20,26 +20,23 @@ operations = {
 }
 
 print(logo)
-
-def calculator():
+def calculate():
     should_acc = True
-    num1 = float(input("What is the first number?: "))
+    num1 = float(input("What is the first number: "))
 
     while should_acc:
         for symbol in operations:
             print(symbol)
-        operation_symbol = input("Pick an operation: ")
-        num2 = float(input("What is the second number?: "))
-        result = operations[operation_symbol](num1, num2)
-        print(f"{num1} {operation_symbol} {num2} = {result}")
+        symbol = input("What mathematical operation do you want to perform: ")
+        num2 = float(input("What is the second number: "))
+        result = operations[symbol](num1,num2)
+        print(f"{num1} {symbol} {num2} = {result}")
 
-        choice = input(f"Type 'y' to continue calculatet with {result}, or 'n' to start a new calculations")
+        choice = input("Type 'y' to perform next calculation with current value or type 'n' to start new calculation: ").lower()
 
         if choice == "y":
             num1 = result
         else:
             should_acc = False
-            print("\n" * 20)
-            calculator()
-
-calculator()
+            calculate()
+calculate()
