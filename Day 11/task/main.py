@@ -191,10 +191,8 @@ def blackjack():
             print(f"You won! Computer score is over 21. Computer score was: {computer_score}")
             return
         # if not than we compare results
-        choose_winner(user_score,computer_score, user_hand, computer_hand)
 
-        # user_hand = []
-        # computer_hand = []
+        choose_winner(user_score,computer_score, user_hand, computer_hand)
         play = input("Do you want to play a Blackjack game? Type 'y' or 'n'")
         if play == "y":
             blackjack()
