@@ -1,6 +1,9 @@
 import random
 from art import logo
 
+HARD = 5
+EASY = 10
+
 def generate_number():
     return random.randint(1,100)
 
@@ -10,9 +13,9 @@ def check_if_correct(number,users_guess):
 
 def choose_difficulty(choice):
     if choice == 'easy':
-        return 10
+        return EASY
     elif choice == 'hard':
-        return 5
+        return HARD
 
 def game():
     random_number = generate_number()
@@ -23,7 +26,7 @@ def game():
     print("Welcome to the Number Guessing Game!")
     print("I'm thinking of a number between 1 and 100.")
 
-    difficulty = input("Choose a difficulty. Type 'easy' or 'hard': ")
+    difficulty = input("Choose a difficulty. Type 'easy' or 'hard': ").lower()
     attempts = choose_difficulty(difficulty)
 
     for i in range(attempts):
