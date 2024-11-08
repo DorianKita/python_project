@@ -29,7 +29,7 @@ resources = {
     "milk": 200,
     "coffee": 100,
 }
-money = 0.00
+
 
 def print_report(resources,money):
     for name in resources:
@@ -50,12 +50,24 @@ def check_resources(choice,resources,drinks):
                 else:
                     print(f"Sorry there is not enough {key}")
                     return False
-
-
     else:
         print("Sorry, we don't have this drink.")
 
+def process_coins():
+    quarters = 0.25
+    dimes = 0.10
+    nickles = 0.05
+    pennies = 0.01
+    quarters_inserted = int(input("How many quarters? : "))
+    dimes_inserted = int(input("How many dimes? : "))
+    nickles_inserted = int(input("How many nickles? : "))
+    pennies_inserted = int(input("How many pennies? : "))
+
+    inserted_coins = quarters * quarters_inserted + dimes * dimes_inserted + nickles * nickles_inserted + pennies * pennies_inserted
+    return inserted_coins
+
 def coffee():
+    money = 0.00
     is_off = False
     # prompt user and ask what they want to order
 
@@ -75,6 +87,8 @@ def coffee():
         return
 
     # process coins
+    print("Please insert coins.")
+
 
     # check transaction successful?
 
