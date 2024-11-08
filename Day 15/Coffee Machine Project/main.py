@@ -46,10 +46,11 @@ def check_resources(choice,resources,drinks):
         for key in resources.keys():
             if key in drinks[choice]['ingredients'].keys():
                 if resources[key] >= drinks[choice]['ingredients'][key]:
-                    print("")
+                    print()
                 else:
                     print(f"Sorry there is not enough {key}")
                     return False
+        return True
     else:
         print("Sorry, we don't have this drink.")
 
@@ -88,7 +89,7 @@ def coffee():
 
     # process coins
     print("Please insert coins.")
-
+    money = process_coins()
 
     # check transaction successful?
 
