@@ -46,34 +46,38 @@ def check_resources(choice,resources,drinks):
         for key in resources.keys():
             if key in drinks[choice]['ingredients'].keys():
                 if resources[key] >= drinks[choice]['ingredients'][key]:
-                    return True
+                    print("")
                 else:
+                    print(f"Sorry there is not enough {key}")
                     return False
 
 
     else:
         print("Sorry, we don't have this drink.")
 
+def coffee():
+    is_off = False
+    # prompt user and ask what they want to order
 
-is_off = False
-# prompt user and ask what they want to order
+    user_choice = input('What would you like to order? (espresso/latte/cappuccino): ').lower()
 
-user_choice = input('What would you like to order? (espresso/latte/cappuccino): ').lower()
+    # turn off coffe machine by entering off
+    if user_choice == 'off':
+        is_off = True
 
-# turn off coffe machine by entering off
-if user_choice == 'off':
-    is_off = True
+    # print report
+    if user_choice == 'report':
+        print_report(resources,money)
 
-# print report
-if user_choice == 'report':
-    print_report(resources,money)
+    # check resources sufficent?
 
-# check resources sufficent?
-check_resources(user_choice,resources,MENU)
+    if not check_resources(user_choice,resources,MENU):
+        return
 
-# process coins
+    # process coins
 
-# check transaction successful?
+    # check transaction successful?
 
-# make coffee
+    # make coffee
 
+coffee()
