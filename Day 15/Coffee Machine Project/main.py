@@ -18,7 +18,7 @@ MENU = {
         "ingredients": {
             "water": 250,
             "milk": 100,
-            "coffee": 24,
+            "coffee": 120,
         },
         "cost": 3.0,
     }
@@ -29,4 +29,51 @@ resources = {
     "milk": 200,
     "coffee": 100,
 }
+money = 0.00
+
+def print_report(resources,money):
+    for name in resources:
+        if name == 'water':
+            print(f"{name.capitalize()}: {resources[name]}ml")
+        elif name == 'milk':
+            print(f"{name.capitalize()}: {resources[name]}ml")
+        else:
+            print(f"{name.capitalize()}: {resources[name]}g")
+    print(f"Money: ${money}")
+
+def check_resources(choice,resources,drinks):
+    if choice in drinks:
+        for key in resources.keys():
+            if key in drinks[choice]['ingredients'].keys():
+                if resources[key] >= drinks[choice]['ingredients'][key]:
+                    return True
+                else:
+                    return False
+
+
+    else:
+        print("Sorry, we don't have this drink.")
+
+
+is_off = False
+# prompt user and ask what they want to order
+
+user_choice = input('What would you like to order? (espresso/latte/cappuccino): ').lower()
+
+# turn off coffe machine by entering off
+if user_choice == 'off':
+    is_off = True
+
+# print report
+if user_choice == 'report':
+    print_report(resources,money)
+
+# check resources sufficent?
+check_resources(user_choice,resources,MENU)
+
+# process coins
+
+# check transaction successful?
+
+# make coffee
 
