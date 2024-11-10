@@ -63,6 +63,21 @@ def process_coins():
     inserted_coins = 0.25 * quarters_inserted + 0.10 * dimes_inserted + 0.05 * nickles_inserted + 0.01 * pennies_inserted
     return inserted_coins
 
+
+def check_transaction_successful(money,drinks,choice):
+    if money < drinks[choice]['cost']:
+        return print("Sorry that's not enough money. Money refunded.")
+    elif money > drinks[choice]['cost']:
+        change = round(money - drinks[choice]['cost'],2)
+        money = drinks[choice]['cost']
+        print(f"Here is ${change} dollars in change.")
+        return money
+    elif money == drinks[choice]['cost']:
+        money = drinks[choice]['cost']
+        return money
+
+
+
 def coffee():
     money = 0.00
     is_off = False
@@ -88,8 +103,10 @@ def coffee():
     money = process_coins()
 
     # check transaction successful?
-
-
+    money = check_transaction_successful(money,MENU,user_choice)
+    user_choice = input('What would you like to order? (espresso/latte/cappuccino): ').lower()
+    if user_choice == 'report':
+        print_report(resources,money)
     # make coffee
 
 coffee()
