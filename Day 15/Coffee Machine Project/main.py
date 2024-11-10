@@ -77,9 +77,9 @@ def check_transaction_successful(money,drinks,choice):
         return money
 
 
+money = 0.00
+def coffee(money):
 
-def coffee():
-    money = 0.00
     is_off = False
     # prompt user and ask what they want to order
 
@@ -104,9 +104,7 @@ def coffee():
 
     # check transaction successful?
     money = check_transaction_successful(money,MENU,user_choice)
-    user_choice = input('What would you like to order? (espresso/latte/cappuccino): ').lower()
-    if user_choice == 'report':
-        print_report(resources,money)
+
     # make coffee
 
-coffee()
+coffee(money)
