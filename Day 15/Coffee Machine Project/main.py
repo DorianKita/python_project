@@ -55,16 +55,12 @@ def check_resources(choice,resources,drinks):
         print("Sorry, we don't have this drink.")
 
 def process_coins():
-    quarters = 0.25
-    dimes = 0.10
-    nickles = 0.05
-    pennies = 0.01
     quarters_inserted = int(input("How many quarters? : "))
     dimes_inserted = int(input("How many dimes? : "))
     nickles_inserted = int(input("How many nickles? : "))
     pennies_inserted = int(input("How many pennies? : "))
 
-    inserted_coins = quarters * quarters_inserted + dimes * dimes_inserted + nickles * nickles_inserted + pennies * pennies_inserted
+    inserted_coins = 0.25 * quarters_inserted + 0.10 * dimes_inserted + 0.05 * nickles_inserted + 0.01 * pennies_inserted
     return inserted_coins
 
 def coffee():
@@ -92,6 +88,7 @@ def coffee():
     money = process_coins()
 
     # check transaction successful?
+
 
     # make coffee
 
