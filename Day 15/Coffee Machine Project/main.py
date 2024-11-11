@@ -76,8 +76,15 @@ def check_transaction_successful(money,drinks,choice):
         money = drinks[choice]['cost']
         return money
 
+def make_coffe(resources, drinks, choice):
+    for key in resources.keys():
+        if key in drinks[choice]['ingredients'].keys():
+            resources[key] -= MENU[choice]['ingredients'][key]
+            resources[key] = resources[key]
+    return(resources)
 
 money = 0.00
+
 def coffee(money):
 
     is_off = False
@@ -106,5 +113,8 @@ def coffee(money):
     money = check_transaction_successful(money,MENU,user_choice)
 
     # make coffee
+    new_resources = make_coffe(resources,MENU,user_choice)
+    print(new_resources)
+    print(f"Here is your {user_choice}. Enjoy!")
 
 coffee(money)
