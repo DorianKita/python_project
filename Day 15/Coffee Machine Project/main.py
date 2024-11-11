@@ -18,7 +18,7 @@ MENU = {
         "ingredients": {
             "water": 250,
             "milk": 100,
-            "coffee": 120,
+            "coffee": 24,
         },
         "cost": 3.0,
     }
@@ -51,7 +51,7 @@ def check_resources(choice,resources,drinks):
                     print(f"Sorry there is not enough {key}")
                     return False
         return True
-    else:
+    elif choice != "report":
         print("Sorry, we don't have this drink.")
 
 def process_coins():
@@ -83,38 +83,40 @@ def make_coffe(resources, drinks, choice):
             resources[key] = resources[key]
     return(resources)
 
-money = 0.00
 
-def coffee(money):
-
+def coffee(resources,):
+    money = 0.00
+    earned_money = 0.00
+    new_resources = resources
     is_off = False
     # prompt user and ask what they want to order
+    while not is_off:
+        user_choice = input('What would you like to order? (espresso/latte/cappuccino): ').lower()
 
-    user_choice = input('What would you like to order? (espresso/latte/cappuccino): ').lower()
+        # turn off coffe machine by entering off
+        if user_choice == 'off':
+            print("Good bye.")
+            return
 
-    # turn off coffe machine by entering off
-    if user_choice == 'off':
-        is_off = True
+        # print report
+        if user_choice == 'report':
+            print_report(new_resources,earned_money)
+            continue
+        # check resources sufficent?
 
-    # print report
-    if user_choice == 'report':
-        print_report(resources,money)
+        if not check_resources(user_choice,new_resources,MENU):
+            return
 
-    # check resources sufficent?
+        # process coins
+        print("Please insert coins.")
+        money = process_coins()
 
-    if not check_resources(user_choice,resources,MENU):
-        return
+        # check transaction successful?
+        earned_money += check_transaction_successful(money,MENU,user_choice)
 
-    # process coins
-    print("Please insert coins.")
-    money = process_coins()
+        # make coffee
+        new_resources = make_coffe(new_resources,MENU,user_choice)
+        print(new_resources)
+        print(f"Here is your {user_choice}. Enjoy!")
 
-    # check transaction successful?
-    money = check_transaction_successful(money,MENU,user_choice)
-
-    # make coffee
-    new_resources = make_coffe(resources,MENU,user_choice)
-    print(new_resources)
-    print(f"Here is your {user_choice}. Enjoy!")
-
-coffee(money)
+coffee(resources)
